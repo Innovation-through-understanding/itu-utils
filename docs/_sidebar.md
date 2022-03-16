@@ -1,0 +1,5 @@
+-   [Home](/)
+-   [Installation and basic usage](/usage.md)
+-   [Common functions](/common.md)
+-   [Invariants, pre- and post-conditions](/invariants.md)
+-   [Did you know?](/tricks.md)

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <script src="https://www.jsdelivr.com/package/npm/prism-typescript.min.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: 'Dokumentation',
+      loadSidebar: true,
+	  plantuml: {
+		skin: 'classic',
+		renderSvgAsObject: true
+  	  },
+	  markdown: {
+		renderer: {
+			code: function (code, lang) {
+				if (lang === 'drawio') {
+					if (window.drawioConverter) {
+						return window.drawioConverter(code)
+					} else {
+						return `<div class='drawio-code'>${code}</div>`
+					}
+				}
+				else {
+					return this.origin.code.apply(this, arguments);
+				}
+			}
+		}
+      }
+    }
+  </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-drawio/viewer.min.js"></script>
+	<script src='//cdn.jsdelivr.net/npm/docsify-drawio/drawio.js'></script>
+	<script src="//unpkg.com/docsify-plantuml/dist/docsify-plantuml.min.js"></script>
+
+
+
+  
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+</body>
+</html>
