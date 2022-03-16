@@ -6,11 +6,11 @@ import { always, complement, equals, isNil, when } from "ramda";
  * @param expr 
  * @returns 
  */
- export const ifNotZero = (n: number, expr: unknown): unknown =>
-	when<number, void>(
-		(x: number) => !equals(x, 0),
-		() => expr
-	)(n);
+export const ifNotZero = (n: number, expr: unknown): unknown =>
+    when<number, void>(
+        (x: number) => !equals(x, 0),
+        () => expr
+    )(n);
 
 /**tintim
 * Performs expr if n is zero
@@ -19,10 +19,10 @@ import { always, complement, equals, isNil, when } from "ramda";
 * @returns 
 */
 export const ifZero = (n: number, expr: unknown): unknown =>
-	when<number, void>(
-		(x: number) => equals(x, 0),
-		() => expr
-	)(n);
+    when<number, void>(
+        (x: number) => equals(x, 0),
+        () => expr
+    )(n);
 
 /** 
 * Returns if the given parameter is neither null nor undefined 

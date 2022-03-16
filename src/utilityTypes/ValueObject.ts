@@ -5,7 +5,7 @@
  * you validate the parsed JSON back, e.g. with a library
  * like `zod` 
  */
-export interface ValueObject<T> extends Readonly<{
+export type ValueObject<T> = Readonly<{
     type: string;
     value: T;
-  }> {}
+  }>

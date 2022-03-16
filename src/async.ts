@@ -1,7 +1,7 @@
 import { Duration } from "luxon";
 import { map } from "ramda";
 
-export {} 
+export {}; 
 
 /**
  * Asynchronosly map over an array
@@ -9,8 +9,7 @@ export {}
  * @param arr array
  * @returns PromiseSettledResult array
  */
- export const settleMap = <T, U>(f: (x: T) => Promise<U>, arr: Array<T>): Promise<PromiseSettledResult<U>[]> => 
- 	Promise.allSettled(map<T, Promise<U>>(f, arr));
+export const settleMap = <T, U>(f: (x: T) => Promise<U>, arr: Array<T>): Promise<PromiseSettledResult<U>[]> => Promise.allSettled(map<T, Promise<U>>(f, arr));
 
 /**
  * Wait for the given number of ms
@@ -18,9 +17,9 @@ export {}
  * @returns a promise that waits
  */
 export const wait = (milliseconds: number | Duration): Promise<void> => {
-	const ms = milliseconds instanceof Duration ? milliseconds.as("milliseconds") : milliseconds;
-	return new Promise((resolve) => setTimeout(resolve, ms));
-}
+    const ms = milliseconds instanceof Duration ? milliseconds.as("milliseconds") : milliseconds;
+    return new Promise((resolve) => setTimeout(resolve, ms));
+};
 	
 
 /**
@@ -43,11 +42,11 @@ declare global { interface PromiseConstructor {
  * @returns a promise
  */
 const timeout = <T>(promise: Promise<T>, timeoutValue = Promise.defaults.timeout): Promise<T> => {
-	const to = new Promise((_, reject) => {
-		setTimeout(() => reject(new Error(`Timeout after ${timeoutValue} ms`)), timeoutValue);
-	})
-	return Promise.race([promise, to]) as Promise<T>;
-}
+    const to = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error(`Timeout after ${timeoutValue} ms`)), timeoutValue);
+    });
+    return Promise.race([promise, to]) as Promise<T>;
+};
 
 global.Promise.timeout = timeout;
 global.Promise.defaults = { ...global.Promise.defaults, timeout: 5000 };

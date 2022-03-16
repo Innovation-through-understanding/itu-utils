@@ -1,5 +1,6 @@
-import { ValueObject } from "./utilityTypes";
 import R from "ramda";
+
+import type { ValueObject } from "./utilityTypes";
 
 /**
  * Returns the value of a value object
@@ -7,8 +8,8 @@ import R from "ramda";
  * @returns enclosed type
  */
 export const valueOf = <T, U extends ValueObject<T>>(vo: U): T => {
-	return vo.value;
-}
+    return vo.value;
+};
 
 /**
  * Returns whether two value objects are equal
@@ -17,5 +18,5 @@ export const valueOf = <T, U extends ValueObject<T>>(vo: U): T => {
  * @returns true if a and b are equal
  */
 export const equals = <T, U extends ValueObject<T>>(a: U, b: U) => {
-	return R.equals(a.value, b.value);
-}
+    return R.equals(a.value, b.value);
+};

@@ -16,22 +16,22 @@ describe("settledMap", () => {
 });
 
 describe("wait", () => {
-	it("will wait for an amount of time", async () => {
-		const start = Date.now();
-		await wait(300);
-		const end = Date.now();
-		expect(end-start).toBeGreaterThan(299);
-		expect(end-start).toBeLessThan(310);
-	})
-})
+    it("will wait for an amount of time", async () => {
+        const start = Date.now();
+        await wait(300);
+        const end = Date.now();
+        expect(end-start).toBeGreaterThan(299);
+        expect(end-start).toBeLessThan(310);
+    });
+});
 
 describe("timeout", () => {
-	it("will trigger when the timeout is reached", async () => {
-		const tu = Promise.timeout(wait(1000), 500);
-		expect(tu).rejects.toBeTruthy();
-	})
-	it("will not trigger when the timeout is not reached", async () => {
-		const tu = Promise.timeout(Promise.resolve(true), 500);
-		expect(tu).resolves.toBeTruthy();
-	})
-})
+    it("will trigger when the timeout is reached", async () => {
+        const tu = Promise.timeout(wait(1000), 500);
+        expect(tu).rejects.toBeTruthy();
+    });
+    it("will not trigger when the timeout is not reached", async () => {
+        const tu = Promise.timeout(Promise.resolve(true), 500);
+        expect(tu).resolves.toBeTruthy();
+    });
+});

@@ -1,4 +1,4 @@
-import { Invariant, TestFunction } from "./utilityTypes/Invariants";
+import type { Invariant, TestFunction } from "./utilityTypes/Invariants";
 
 /**
  * Helper function to create invariant expressions from 
@@ -7,7 +7,7 @@ import { Invariant, TestFunction } from "./utilityTypes/Invariants";
  * @returns (value: T, name: string) => Invariant function
  */
 export function invariantFactory<T>(expression: TestFunction<T>, message: string): Invariant<T> {
-	return (value: T, name: string) => invariant(expression(value), name + " " + message);
+    return (value: T, name: string) => invariant(expression(value), name + " " + message);
 }
 
 /**
@@ -16,9 +16,9 @@ export function invariantFactory<T>(expression: TestFunction<T>, message: string
  * @param message Exception message to throw on error
  */
 export function invariant<T>(value: T,message?: string): asserts value is NonNullable<T> {
-	if (!value) {
-		throw new Error(`Invariant violation: ${message ?? "Expression failed"}`);
-	}
+    if (!value) {
+        throw new Error(`Invariant violation: ${message ?? "Expression failed"}`);
+    }
 }
 
 // Pre-defined invariants

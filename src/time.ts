@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+
 import { isTimestamp, Timestamp } from "./utilityTypes/Timestamp";
 import { valueOf } from "./valueObjects";
 
@@ -9,19 +10,19 @@ import { valueOf } from "./valueObjects";
  */
 export const toTimestamp = (dt: DateTime = DateTime.local()): Timestamp => new Timestamp(dt.toUTC().valueOf());
 
- /**
+/**
   * Create a UTC DateTime object from a timestamp
   * @param ts Timestamp
   * @returns UTC DateTime object
   */
 export const fromTimestampToUtc = (ts: number | Timestamp): DateTime => {
-	if (isTimestamp(ts)) {
-		return DateTime.fromMillis(valueOf(ts), { zone: "UTC" });	
-	}
-	return DateTime.fromMillis(ts, { zone: "UTC" });
-}
+    if (isTimestamp(ts)) {
+        return DateTime.fromMillis(valueOf(ts), { zone: "UTC" });	
+    }
+    return DateTime.fromMillis(ts, { zone: "UTC" });
+};
 
- /**
+/**
   * Create a DateTime object from a timestamp
   * @param ts Timestamp
   * @returns DateTime object (local time)

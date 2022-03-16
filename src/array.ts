@@ -1,5 +1,5 @@
-import { isNil, isEmpty } from "ramda";
-import { Monad } from "tsmonads";
+import { isEmpty,isNil } from "ramda";
+import type { Monad } from "tsmonads";
 
 type SubType<Base, Condition> = Pick<
     Base,
@@ -31,4 +31,4 @@ export const arrayToRecord = <T, K extends keyof SubType<T, string>>(arr: T[], k
 
 /** Returns whether a list or monad exists and has at least one element */
 export const containsValue = (list: undefined | null | string | Array<unknown> | Monad<unknown>): boolean =>
-	!isNil(list) && !isEmpty(list);
+    !isNil(list) && !isEmpty(list);
