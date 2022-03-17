@@ -1,11 +1,16 @@
 import type { ValueObject } from "./ValueObject";
 
+/**
+ * Value class to represent timestamps (in milliseconds since 1.1.1970)
+ */
 export class Timestamp implements ValueObject<number> {
+    public readonly value: number;
     public readonly type = "Timestamp";
-    constructor(public readonly value: number) {}
+    constructor(_value: number) {
+        if (_value < 100000000000) {
+            this.value = _value * 1000;
+        } else {
+            this.value = _value;
+        }
+    }
 }
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isTimestamp = (ts: any): ts is Timestamp => {
-    return ts.type === "Timestamp" && typeof(ts?.value) === "number";
-};

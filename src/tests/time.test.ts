@@ -1,6 +1,27 @@
 import { DateTime, Duration } from "luxon";
 
-import { days, fromTimestamp, fromTimestampToUtc, hours, minutes, months, seconds, toTimestamp, weeks, years } from "../time";
+import { days, fromTimestamp, fromTimestampToUtc, hours, isTimestamp, minutes, months, seconds, toTimestamp, weeks, years } from "../time";
+import { Timestamp } from "../utilityTypes";
+import { valueOf } from "../valueObjects";
+
+describe("Timestamps", () => {
+    it("are created properly from UNIX ms epoch", () => {
+        const value = 1647527186000;
+        const ts = new Timestamp(value);
+        expect(valueOf(ts)).toBe(1647527186000);
+    });
+    it("are created properly from UNIX epoch", () => {
+        const value = 1647527186;
+        const ts = new Timestamp(value);
+        expect(valueOf(ts)).toBe(1647527186000);
+    });
+    it("are properly type guarded", () => {
+        const ts1 = new Timestamp(0);
+        expect(isTimestamp(ts1)).toBeTruthy();
+        const ts2 = { value: 0 };
+        expect(isTimestamp(ts2)).toBeFalsy();
+    });
+});
 
 describe("Time functions", () => {
     it("toTimestamp should return the correct utc timestamp", () => {
@@ -18,13 +39,13 @@ describe("Time functions", () => {
         expect(fromTimestampToUtc(ts).valueOf()).toBe(dt.toUTC().valueOf());
     });
     it("unix epoch helpers return the correct number of milliseconds", () => {
-        const secs = seconds(35);
-        const mins = minutes(14);
-        const hour = hours(20);
-        const day = days(10);
-        const week = weeks(2);
-        const month = months(3);
-        const year = years(1);
+        const secs = seconds(35).toMillis();
+        const mins = minutes(14).toMillis();
+        const hour = hours(20).toMillis();
+        const day = days(10).toMillis();
+        const week = weeks(2).toMillis();
+        const month = months(3).toMillis();
+        const year = years(1).toMillis();
         expect(secs).toBe(Duration.fromObject({seconds: 35}).as("milliseconds"));
         expect(mins).toBe(Duration.fromObject({minutes: 14}).as("milliseconds"));
         expect(hour).toBe(Duration.fromObject({hours: 20}).as("milliseconds"));

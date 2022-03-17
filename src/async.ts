@@ -41,11 +41,16 @@ declare global { interface PromiseConstructor {
  * @param timeoutValue custom timeoutvalue (defaults to Promise.defaults.timeout)
  * @returns a promise
  */
-const timeout = <T>(promise: Promise<T>, timeoutValue = Promise.defaults.timeout): Promise<T> => {
-    const to = new Promise((_, reject) => {
-        setTimeout(() => reject(new Error(`Timeout after ${timeoutValue} ms`)), timeoutValue);
+const timeout = <T>(promise: Promise<T>, timeoutValue: number | Duration = Promise.defaults.timeout): Promise<T> => {
+    let timerHandle: NodeJS.Timeout | undefined = undefined;
+    const timeoutPromise = new Promise((_, reject) => {
+        timerHandle = setTimeout(() => {
+            reject(new Error(`Timeout after ${timeoutValue} ms`));
+        }, timeoutValue instanceof Duration ? timeoutValue.toMillis() : timeoutValue);
     });
-    return Promise.race([promise, to]) as Promise<T>;
+    return Promise.race([
+        promise.then((result) => { timerHandle && clearTimeout(timerHandle); return result; }), 
+        timeoutPromise]) as Promise<T>;
 };
 
 global.Promise.timeout = timeout;

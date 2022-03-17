@@ -31,3 +31,35 @@ This allows you to properly guard and call your function now:
 const foobar = "/usr";
 if (isPath(foobar)) dealWitPath(foobar);
 ```
+
+## Typesafe exception handling
+
+Recent versions of Typescript enforced that exceptions are treated as either any or unknown types. My personal preference and suggestion is to always assume errors to be `unknown` and afterwards
+dive into handling specific errors:
+
+```Typescript
+class MyError extends Error {
+	constructor(message: string, public additionalData: any) {
+		super(message);
+	}
+}
+
+const throwingFunction = () => {
+	// throw new Error("This is my error");
+	throw new MyError("This is my error", { payload: "foobar" });
+}
+
+try {
+	throwingFunction();
+} catch (e) {
+	if (e instanceof MyError) {
+		console.error(e.message, e.additionalData, e.stack);
+	} else if (e instanceof Error) {
+		console.error(e.message, e.stack);
+	} else {
+		console.error("This should NEVER happen!");
+	}
+}
+```
+
+> Depending on your code structure, not using try-catch-blocks at all and relying on functional error handling (e.g. by using the _Try_ or _Either_ monads from the `tsmonads` package) might even be a better way to deal with errors in a typesafe manner.

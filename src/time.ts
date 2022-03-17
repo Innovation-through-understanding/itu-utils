@@ -1,6 +1,6 @@
-import { DateTime } from "luxon";
+import { DateTime, Duration } from "luxon";
 
-import { isTimestamp, Timestamp } from "./utilityTypes/Timestamp";
+import { Timestamp } from "./utilityTypes/Timestamp";
 import { valueOf } from "./valueObjects";
 
 /**
@@ -28,15 +28,64 @@ export const fromTimestampToUtc = (ts: number | Timestamp): DateTime => {
   * @returns DateTime object (local time)
   */
 export const fromTimestamp = (ts: number | Timestamp): DateTime => fromTimestampToUtc(ts).toLocal();
- 
-export const seconds = (t: number): number => t * 1000;
-export const minutes = (t: number): number => t * 60 * seconds(1);
-export const hours = (t: number): number => t * 60 * minutes(1);
 
-export const days = (t: number): number => t * 24 * hours(1);
+/**
+ * Typeguard checking whether the given enity is a timestamp
+ * @param ts an arbitrary object
+ * @returns whether ts is of type Timestamp
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isTimestamp = (ts: any): ts is Timestamp => {
+    return ts?.type === "Timestamp" && typeof(ts?.value) === "number";
+};
 
-export const weeks = (t: number): number => t * 7 * days(1);
+// Fast creation methods for durations
 
-export const months = (t: number): number => t * 30 * days(1);
+/**
+ * Create a duration describing the given amount of seconds
+ * @param t seconds
+ * @returns Duration object
+ */
+export const seconds = (t: number): Duration => Duration.fromObject({seconds: t});
 
-export const years = (t: number): number => t * 365 * days(1);
+/**
+ * Create a duration describing the given amount of minutes
+ * @param t minutes
+ * @returns Duration object
+ */
+export const minutes = (t: number): Duration => Duration.fromObject({minutes: t});
+
+/**
+ * Create a duration describing the given amount of hours
+ * @param t hours
+ * @returns Duration object
+ */
+export const hours = (t: number): Duration => Duration.fromObject({hours: t});
+
+/**
+ * Create a duration describing the given amount of days
+ * @param t days
+ * @returns Duration object
+ */
+export const days = (t: number): Duration => Duration.fromObject({days: t});
+
+/**
+ * Create a duration describing the given amount of weeks
+ * @param t weeks
+ * @returns Duration object
+ */
+export const weeks = (t: number): Duration => Duration.fromObject({weeks: t});
+
+/**
+ * Create a duration describing the given amount of months
+ * @param t months
+ * @returns Duration object
+ */
+export const months = (t: number): Duration => Duration.fromObject({months: t});
+
+/**
+ * Create a duration describing the given amount of years
+ * @param t years
+ * @returns Duration object
+ */
+export const years = (t: number): Duration => Duration.fromObject({years: t});

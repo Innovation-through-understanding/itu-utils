@@ -1,4 +1,7 @@
+import { Duration } from "luxon";
+
 import { settleMap, wait } from "../async";
+import { seconds } from "../time";
 
 describe("settledMap", () => {
     it("will async map over array", async () => {
@@ -23,15 +26,30 @@ describe("wait", () => {
         expect(end-start).toBeGreaterThan(299);
         expect(end-start).toBeLessThan(310);
     });
+    it("should also work with a duration", async () => {
+        const start = Date.now();
+        await wait(seconds(1));
+        const end = Date.now();
+        expect(end-start).toBeGreaterThan(999);
+        expect(end-start).toBeLessThan(1050);
+    });
 });
 
 describe("timeout", () => {
     it("will trigger when the timeout is reached", async () => {
-        const tu = Promise.timeout(wait(1000), 500);
+        const waitingPromise = wait(1000);
+        const tu = Promise.timeout(waitingPromise, 500);
         expect(tu).rejects.toBeTruthy();
+        await waitingPromise;
     });
     it("will not trigger when the timeout is not reached", async () => {
         const tu = Promise.timeout(Promise.resolve(true), 500);
         expect(tu).resolves.toBeTruthy();
+    });
+    it("will also work with a duration", async () => {
+        const waitingPromise = wait(1000);
+        const tu = Promise.timeout(waitingPromise, Duration.fromObject({milliseconds: 500}));
+        expect(tu).rejects.toBeTruthy();
+        await waitingPromise;
     });
 });
