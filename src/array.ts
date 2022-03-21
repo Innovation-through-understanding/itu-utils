@@ -1,4 +1,4 @@
-import { isEmpty,isNil } from "ramda";
+import { isEmpty,isNil, keys } from "ramda";
 import type { Monad } from "tsmonads";
 
 type SubType<Base, Condition> = Pick<
@@ -29,6 +29,21 @@ export const arrayToRecord = <T, K extends keyof SubType<T, string>>(arr: T[], k
         return accumulator;
     }, {}) ?? {};
 
+/**
+ * Turns an record with numerical-valued property names into an array. Array elements will be sorted 
+ * according to the numerical value of the record's property.
+ * 
+ * If the object in question also contains non-numerical properties, the values will be appended to the 
+ * sorted array of numerical properties in order of their appearance.
+ * 
+ * @param obj a record of the form { "1": ..., "2": ..., "4010": ...}
+ * @returns array of property values
+ */
+export const recordToArray = <T>(obj: Record<string, T>): Array<T> => {
+    const sortedKeys = keys(obj).sort((a,b) => parseInt(a) - parseInt(b));
+    return sortedKeys.reduce<T[]>((arr, key) => [...arr, obj[key]], []);
+};
+	
 /** Returns whether a list or monad exists and has at least one element */
 export const containsValue = (list: undefined | null | string | Array<unknown> | Monad<unknown>): boolean =>
     !isNil(list) && !isEmpty(list);

@@ -14,6 +14,9 @@ is especially useful when debugging functional code or lambda functions.
 `containsValue`
 : will test an array, string, or monad on whether it contains the given value. The function also accepts undefined or null input and will return false in that case.
 
+`recordToArray`
+: turns a record's properties into an array. Property keys that are numerical values are also sorted from smallest to biggest number.
+
 ## Functional arithmetics and tests
 
 `isNotZero`
