@@ -1,4 +1,5 @@
 import { DateTime, Duration } from "luxon";
+import R from "ramda";
 
 import { days, fromTimestamp, fromTimestampToUtc, hours, isTimestamp, minutes, months, seconds, toTimestamp, weeks, years } from "../time";
 import { Timestamp } from "../utilityTypes";
@@ -18,6 +19,8 @@ describe("Timestamps", () => {
         expect(ts1 === ts1).toBeTruthy();
         expect(ts1 === ts3).toBeFalsy();
         expect(ts1.equals(ts3)).toBeTruthy();
+        expect(R.equals(ts1, ts3)).toBeTruthy();
+        expect(R.equals(ts1, ts2)).toBeFalsy();
     });
     it("are created properly from UNIX ms epoch", () => {
         const value = 1647527186000;
