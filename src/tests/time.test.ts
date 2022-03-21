@@ -5,6 +5,20 @@ import { Timestamp } from "../utilityTypes";
 import { valueOf } from "../valueObjects";
 
 describe("Timestamps", () => {
+    it("should be comparable", () => {
+        const ts1 = new Timestamp(12);
+        const ts3 = new Timestamp(12);
+        const ts2 = new Timestamp(24);
+        expect(ts1 < ts2).toBeTruthy();
+        expect(ts1 > ts2).toBeFalsy();
+        expect(ts1 <= ts2).toBeTruthy();
+        expect(ts1 >= ts2).toBeFalsy();
+        expect(ts1 == ts1).toBeTruthy();
+        expect(ts1 == ts3).toBeFalsy();
+        expect(ts1 === ts1).toBeTruthy();
+        expect(ts1 === ts3).toBeFalsy();
+        expect(ts1.equals(ts3)).toBeTruthy();
+    });
     it("are created properly from UNIX ms epoch", () => {
         const value = 1647527186000;
         const ts = new Timestamp(value);

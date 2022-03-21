@@ -6,11 +6,17 @@ import type { ValueObject } from "./ValueObject";
 export class Timestamp implements ValueObject<number> {
     public readonly value: number;
     public readonly type = "Timestamp";
+    
     constructor(_value: number) {
         if (_value < 100000000000) {
             this.value = _value * 1000;
         } else {
             this.value = _value;
         }
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (this as any)[Symbol.toPrimitive] = (_hint: string) => this.value;
     }
+
+    public equals = (that: Timestamp) => this.value === that.value;
 }
