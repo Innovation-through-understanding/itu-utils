@@ -40,7 +40,7 @@ ITU projects rely on `luxon` to properly deal with time, date, and durations.
 !> If you create a timestamp from a normal UNIX timestamp in seconds, conversion to milliseconds will happen automatically! Note that this a heuristic (conversion happens if value is below 100000000000) and
 may fail.
 
-Timestamps are directly _comparable_ using the `<, >, <=` and `>=` operators. Note that since they're objects, you need to use their `equals`-Method to compare for equality.
+> Timestamps are directly _comparable_ using the `<, >, <=` and `>=` operators. Note that since they're objects, you need to use their `equals`-method to compare for equality.
 
 This library also adds some additonal functions to make your life even a little bit easier:
 
