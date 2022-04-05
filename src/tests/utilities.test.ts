@@ -1,4 +1,4 @@
-import { ifNotZero, ifZero, isNotNil } from "../functional";
+import { ifNotZero, ifZero, isNotNil, maybeIf } from "../functional";
 
 describe("ifZero", () => {
     it("should return the expression if the value is zero", () => {
@@ -33,5 +33,13 @@ describe("isNotNil", () => {
         expect(isNotNil("")).toBeTruthy();
         expect(isNotNil(undefined)).toBeFalsy();
         expect(isNotNil(null)).toBeFalsy();
+    });
+});
+
+describe("maybeIf", () => {
+    it("should return maybe for positive tests, nothing for negative ones", () => {
+        const expired = maybeIf((s: {expire: number}) => s.expire > 10);
+        expect(expired({expire: 12}).hasValue).toBeTruthy();
+        expect(expired({expire: 0}).hasValue).toBeFalsy();
     });
 });

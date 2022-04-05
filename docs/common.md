@@ -19,6 +19,12 @@ is especially useful when debugging functional code or lambda functions.
 
 ## Functional arithmetics and tests
 
+`Unit`
+: This a type-safe return value that can be used instead of `void`. It is a _truthy_ value. Construct it via the `unit()` helper function.
+
+`maybeIf`
+: constructs helper functions to create a Maybe monad conditionally. `f(pred)(obj: T)` will return a `Maybe` containing `obj` if `pred` returns `true` for `obj`. Otherwise, it will return `Nothing`.
+
 `isNotZero`
 : if the first parameter is not 0, will return the expression given in the second parameter
 
