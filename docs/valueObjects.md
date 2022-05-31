@@ -1,6 +1,6 @@
 # Value objects
 
-The libary provides a base type for value objects (simple immutable types that usually wrap one or more primitive values, see [Fowler](https://www.martinfowler.com/bliki/ValueObject.html) for an in-depth explanation of value objects) and also some utility functions to deal with those types.
+The library provides a base type for value objects (simple immutable types that usually wrap one or more primitive values, see [Fowler](https://www.martinfowler.com/bliki/ValueObject.html) for an in-depth explanation of value objects) and also some utility functions to deal with those types.
 
 ```ts
 type ValueObject<T> = Readonly<{
@@ -31,4 +31,4 @@ const isTimestamp = (ts: any): ts is Timestamp => {
 };
 ```
 
-!> We suggest also implemeting a type guard is\[VType\] when implementing a value object \[VType\].
+!> We suggest also implementing a type guard is\[VType\] when implementing a value object \[VType\].

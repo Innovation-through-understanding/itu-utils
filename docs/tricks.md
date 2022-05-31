@@ -1,6 +1,6 @@
 # Typescript tips and tricks
 
-## Typesafe enforcement of a narrow subtype for a parameter
+## Type-safe enforcement of a narrow subtype for a parameter
 
 Assume that you want to write a function that
 only accepts certain strings, e.g. a valid unix file path:
@@ -13,7 +13,7 @@ function dealWitPath(p: Unixpath) {
 }
 ```
 
-The first thing to notice here is that you cannot instantiate any values of the `Unixpath` type (since you cannot add the \_brand property typesafely to a string).
+The first thing to notice here is that you cannot instantiate any values of the `Unixpath` type (since you cannot add the \_brand property typ-esafely to a string).
 
 If trying to call this function with a string (even if it contains a file path) will also lead to an error.
 
@@ -32,7 +32,7 @@ const foobar = "/usr";
 if (isPath(foobar)) dealWitPath(foobar);
 ```
 
-## Typesafe exception handling
+## Type-safe exception handling
 
 Recent versions of Typescript enforced that exceptions are treated as either any or unknown types. My personal preference and suggestion is to always assume errors to be `unknown` and afterwards
 dive into handling specific errors:
@@ -62,4 +62,4 @@ try {
 }
 ```
 
-> Depending on your code structure, not using try-catch-blocks at all and relying on functional error handling (e.g. by using the _Try_ or _Either_ monads from the `tsmonads` package) might even be a better way to deal with errors in a typesafe manner.
+> Depending on your code structure, not using try-catch-blocks at all and relying on functional error handling (e.g. by using the _Try_ or _Either_ monads from the `tsmonads` package) might even be a better way to deal with errors in a type-safe manner.

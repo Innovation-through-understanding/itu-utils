@@ -17,6 +17,11 @@ is especially useful when debugging functional code or lambda functions.
 `recordToArray`
 : turns a record's properties into an array. Property keys that are numerical values are also sorted from smallest to biggest number.
 
+## Utility types
+
+`Unpack`
+: `Unpack<T>` will be `U` for `T` being of type `Array<U>` or `T` otherwise. Use it to extract the element type from an array.
+
 ## Functional arithmetics and tests
 
 `Unit`
