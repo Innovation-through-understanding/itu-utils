@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+-   Added the `Nominal<>` to support nominal typings.
+
 ## 1.3.0
 
 -   Added the `Unpacked<>` type which allows to extract the element type from an array.
@@ -11,7 +15,7 @@
 
 ## 1.1.0
 
--   `Timestamp` objects are now comparable using comparism operators using javascript's [Abstract Relational Comparison](https://tc39.es/ecma262/#sec-abstract-relational-comparison)
+-   `Timestamp` objects are now comparable by comparison operators using javascript's [Abstract Relational Comparison](https://tc39.es/ecma262/#sec-abstract-relational-comparison)
 -   added `recordToArray` function
 
 ## 1.0.0

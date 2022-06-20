@@ -5,3 +5,4 @@ export type { Invariant, TestFunction } from "./Invariants";
 export type { Unit } from "./Unit";
 export { unit } from "./Unit";
 export { Unpacked } from "./Unpacked";
+export { Nominal } from "./Nominal";

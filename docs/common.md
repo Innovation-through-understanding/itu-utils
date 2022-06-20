@@ -22,6 +22,9 @@ is especially useful when debugging functional code or lambda functions.
 `Unpack`
 : `Unpack<T>` will be `U` for `T` being of type `Array<U>` or `T` otherwise. Use it to extract the element type from an array.
 
+`Nominal`
+: `Nominal` will enrich a Type `T` to distinguish it from `T`. Variables of type `T` cannot be assigned to it directly. It is only creatable by providing a factory function or using an explicit cast.
+
 ## Functional arithmetics and tests
 
 `Unit`
@@ -53,7 +56,7 @@ may fail.
 
 > Timestamps are directly _comparable_ using the `<, >, <=` and `>=` operators. Note that since they're objects, you need to use their `equals`-method to compare for equality.
 
-This library also adds some additonal functions to make your life even a little bit easier:
+This library also adds some additional functions to make your life even a little bit easier:
 
 `toTimestamp`
 : When called without any parameter, will return an UTC timestamp for the current datetime. Can also be called with a `DateTime` object to get a timestamp for another datetime.

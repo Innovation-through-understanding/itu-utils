@@ -9,9 +9,9 @@ type ValueObject<T> = Readonly<{
 }>;
 ```
 
-Use `valueOf` to extract the value from a value object in a functional manner. Use `equals` if you want to compare two value objects in a typesafe way.
+Use `valueOf` to extract the value from a value object in a functional manner. Use `equals` if you want to compare two value objects in a type-safe way.
 
-> The `Timestamp` type in this libarry is also an implementation of `ValueObject<T>` and can be used as an example for implementing your own value objects.
+> The `Timestamp` type in this library is also an implementation of `ValueObject<T>` and can be used as an example for implementing your own value objects.
 
 ```Typescript
 class Timestamp implements ValueObject<number> {

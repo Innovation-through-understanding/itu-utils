@@ -4,5 +4,5 @@
  */
 export type Unit = true;
 
-/** Create a value of type Ubit */
+/** Create a value of type Unit */
 export const unit = (): Unit => true;
