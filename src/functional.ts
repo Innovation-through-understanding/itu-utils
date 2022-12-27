@@ -14,7 +14,7 @@ export const ifNotZero = (n: number, expr: unknown): unknown =>
         () => expr
     )(n);
 
-/**tintim
+/**
 * Performs expr if n is zero
 * @param n 
 * @param expr 

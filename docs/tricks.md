@@ -32,6 +32,8 @@ const foobar = "/usr";
 if (isPath(foobar)) dealWitPath(foobar);
 ```
 
+> You can use _Nominal types_ to define your narrow subtypes to make your life even easier!
+
 ## Type-safe exception handling
 
 Recent versions of Typescript enforced that exceptions are treated as either any or unknown types. My personal preference and suggestion is to always assume errors to be `unknown` and afterwards

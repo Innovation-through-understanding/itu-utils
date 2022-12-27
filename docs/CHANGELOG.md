@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0
+
+-   Package audit and dependency updates
+
+## 1.5.0
+
+-   Unit is now a nominal type.
+
 ## 1.4.0
 
 -   Added the `Nominal<>` to support nominal typings.

@@ -16,10 +16,10 @@ Make sure that you have an `.npmrc` file in the root of your project that contai
 
 | Library          | Minimum version |
 | :--------------- | :-------------: |
-| luxon            |      2.3.1      |
+| luxon            |      3.1.1      |
 | ramda            |     0.28.0      |
-| tsmonads         |      2.5.3      |
-| typescript       |      4.3.6      |
+| tsmonads         |      2.7.1      |
+| typescript       |      4.9.4      |
 | reflect-metadata |     0.1.13      |
 
 !> If your project does not meet those requirements, please make sure to add or update those dependencies. All ITU projects should make use of those libraries.
