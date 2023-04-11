@@ -6,3 +6,4 @@ export type { Unit } from "./Unit";
 export { unit } from "./Unit";
 export { Unpacked } from "./Unpacked";
 export { Nominal } from "./Nominal";
+export { match, MapValue, SelectValue, Case } from "./Match";

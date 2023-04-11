@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.0
+
+-   Added match function for weakly-typed pattern matching operations
+
 ## 1.6.0
 
 -   Package audit and dependency updates

@@ -2,6 +2,7 @@
 -   [Installation and basic usage](/usage.md)
 -   [Common functions](/common.md)
 -   [Value objects](/valueObjects.md)
+-   [Pattern matching](/patternmatching.md)
 -   [Invariants, pre- and post-conditions](/invariants.md)
 -   [Did you know?](/tricks.md)
 -   [CHANGELOG](/CHANGELOG.md)
