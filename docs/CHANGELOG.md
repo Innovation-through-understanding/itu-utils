@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.0
+
+-   Added Reveal type to ease deep-inheritance debugging
+
 ## 1.7.0
 
 -   Added match function for weakly-typed pattern matching operations

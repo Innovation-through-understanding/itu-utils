@@ -25,6 +25,9 @@ is especially useful when debugging functional code or lambda functions.
 `Nominal`
 : `Nominal` will enrich a Type `T` to distinguish it from `T`. Variables of type `T` cannot be assigned to it directly. It is only creatable by providing a factory function or using an explicit cast.
 
+`Reveal`
+: Reveals all properties (e.g. for Tooltips or code completion) of `T`, which is especially useful a deeply-inherited type. Use this for (static) debugging purposes. Avoid using it in production.
+
 ## Functional arithmetics and tests
 
 `Unit`

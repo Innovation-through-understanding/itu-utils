@@ -7,3 +7,4 @@ export { unit } from "./Unit";
 export { Unpacked } from "./Unpacked";
 export { Nominal } from "./Nominal";
 export { match, MapValue, SelectValue, Case } from "./Match";
+export { Reveal } from "./Reveal";

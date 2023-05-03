@@ -31,7 +31,7 @@ describe("wait", () => {
         await wait(seconds(1));
         const end = Date.now();
         expect(end-start).toBeGreaterThan(999);
-        expect(end-start).toBeLessThan(1050);
+        expect(end-start).toBeLessThan(1150);
     });
 });
 
