@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.1
+
+-   Dependency updates, moved project to public npm and github
+
 ## 1.8.0
 
 -   Added Reveal type to ease deep-inheritance debugging

@@ -1,11 +1,14 @@
 {
-  "name": "@itu/utils",
-  "version": "1.8.0",
+  "name": "itu-utils",
+  "version": "1.8.1",
   "description": "ITU utility library",
   "main": "dist/index.js",
-  "repository": "git@bitbucket.org:hendrikbelitz/itu-utils.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Innovation-through-understanding/itu-utils.git"
+  },
   "author": "Hendrik Belitz <hendrik@innovation-through-understanding.de>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
@@ -49,10 +52,10 @@
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
-    "luxon": "^3.1.1",
-    "ramda": "^0.28.0",
-    "tsmonads": "^2.7.1",
-    "typescript": "^4.9.4"
+    "luxon": "^3.4.4",
+    "ramda": "^0.29.1",
+    "tsmonads": "^3.1.0",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13"
@@ -61,8 +64,11 @@
     "minimist": "^1.2.6",
     "got": "^11.8.5",
     "marked": "^4.0.10",
-	"json5": "^2.2.3",
-	"http-cache-semantics": "^4.1.1",
-	"yaml": "^2.2.2"
+    "json5": "^2.2.3",
+    "http-cache-semantics": "^4.1.1",
+    "yaml": "^2.2.2",
+    "semver": "^7.5.2",
+    "@babel/traverse": "^7.23.2",
+    "word-wrap": "^1.2.4"
   }
 }
