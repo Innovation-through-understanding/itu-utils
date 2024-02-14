@@ -52,7 +52,7 @@ is especially useful when debugging functional code or lambda functions.
 
 ITU projects rely on `luxon` to properly deal with time, date, and durations.
 
-`@itu/utils` provides an immutable `Timestamp` value type in addition so you no longer need to work with plain numbers. The timestamp is always measured in milliseconds since Jan. 1st 1970.
+`itu-utils` provides an immutable `Timestamp` value type in addition so you no longer need to work with plain numbers. The timestamp is always measured in milliseconds since Jan. 1st 1970.
 
 !> If you create a timestamp from a normal UNIX timestamp in seconds, conversion to milliseconds will happen automatically! Note that this a heuristic (conversion happens if value is below 100000000000) and
 may fail.

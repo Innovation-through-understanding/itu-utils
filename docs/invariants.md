@@ -1,6 +1,6 @@
 # Invariants, pre- and post-conditions
 
-`@itu/utils` provides decorators and factory function to enhance arbitrary classes with the handling of preconditions, post-conditions and return type checking.
+`itu-utils` provides decorators and factory function to enhance arbitrary classes with the handling of preconditions, post-conditions and return type checking.
 
 ```ts
 const ValueSchema = z.object({
