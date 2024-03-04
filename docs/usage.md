@@ -11,7 +11,7 @@ Install the dependendies given below in your project. Install the `itu-utils` pa
 | Library          | Minimum version |
 | :--------------- | :-------------: |
 | luxon            |      3.4.4      |
-| ramda            |     0.29.1      |
+| rambda           |      9.1.0      |
 | tsmonads         |      3.1.0      |
 | typescript       |      5.3.3      |
 | reflect-metadata |     0.1.13      |

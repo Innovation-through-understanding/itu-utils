@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.2
+
+-   Update of rambda to fix usage of isEqual. Marked Nominal as deprecated, since zod's brand() schema should be preferred over it.
+
 ## 1.8.1
 
 -   Dependency updates, moved project to public npm and github

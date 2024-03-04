@@ -1,6 +1,6 @@
 {
   "name": "itu-utils",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "ITU utility library",
   "main": "dist/index.js",
   "repository": {
@@ -32,7 +32,6 @@
     "@types/jest": "^29.2.4",
     "@types/luxon": "^3.1.0",
     "@types/node": "^18.11.18",
-    "@types/ramda": "^0.28.20",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "docsify-cli": "^4.4.4",
@@ -46,16 +45,16 @@
     "luxon": "^3.3.0",
     "patch-package": "^6.5.0",
     "prettier": "^2.8.1",
-    "ramda": "^0.28.0",
+    "rambda": "^9.1.0",
     "ts-jest": "^29.1.0",
     "tsmonads": "^2.7.1",
     "typescript": "^4.9.4"
   },
   "peerDependencies": {
     "luxon": "^3.4.4",
-    "ramda": "^0.29.1",
     "tsmonads": "^3.1.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+	"rambda": "^9.1.0"
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13"
