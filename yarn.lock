@@ -4411,10 +4411,10 @@ quick-lru@^5.1.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-5.1.1.tgz#366493e6b3e42a3a6885e2e99d18f80fb7a8c932"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
-rambda@^9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/rambda/-/rambda-9.1.0.tgz#43be8c01dcdca37838ae5c1065e58553d2298366"
-  integrity sha512-fCRAq8Of+bAuqjAA0MSb/umbNgiYwy9N5camM2T++Qu/mRImLT3a31hf0REvnqaWCrgrdC3ewf/ucAILsYeBgQ==
+rambda@^9.1.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/rambda/-/rambda-9.1.1.tgz#100e49b3179aaab999c82c2ca13a6602e2191f69"
+  integrity sha512-8A8umDmXQf4EG4cpoM358HWF49I5K7/6I8M8ciN5jdo0tOiwEL0DJqq9JRzWOHNYGiTD13OQFJbvayeafEp8xw==
 
 range-parser@~1.2.1:
   version "1.2.1"
