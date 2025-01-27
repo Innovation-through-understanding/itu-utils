@@ -11,7 +11,7 @@
     "zod": "npm:zod@^3.24.1"
   },
   "exports": {
-    "./stc": "./src/index.ts"
+    "./src": "./src/index.ts"
   },
   "publish": {
     "exclude": [
@@ -22,7 +22,7 @@
     "test": "deno test --allow-env src/tests/*",
     "check": "deno check src/*.ts src/tests/*.ts src/utilityTypes/*.ts",
     "lint": "deno lint src/*.ts src/tests/*.ts src/utilityTypes/*.ts",
-    "fmt-check": "deno fmt --check src/ src/utilityTypes/ src/tests/",
+    "fmt-check": "deno fmt --check",
     "build:npm": "deno run -A scripts/build_npm.ts",
     "serve:doc": "npx docsify serve ./docs"
   },
@@ -38,6 +38,8 @@
     "lineWidth": 100,
     "singleQuote": false,
     "proseWrap": "preserve",
-    "include": ["src/**"]
-  }
+    "include": ["src/**"],
+    "semiColons": true,
+    "useTabs": false,
+  } 
 }

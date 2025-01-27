@@ -46,6 +46,7 @@ export const timeout = <T>(
     });
     return Promise.race([
         promise.then((result) => {
+            // deno-lint-ignore no-explicit-any
             timerHandle && clearTimeout(timerHandle as any);
             return result;
         }),
