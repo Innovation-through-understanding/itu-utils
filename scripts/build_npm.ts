@@ -53,8 +53,8 @@ await build({
     },
     exports: {
       ".": {
-        "import": "./src/index.js",
-        "require": "./src/index.js",
+        "import": "./esm/index.js",
+        "require": "./script/index.js",
       },
     },
   },
