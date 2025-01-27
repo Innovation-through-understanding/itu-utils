@@ -9,7 +9,7 @@ import { valueOf } from "./valueObjects.ts";
  * @returns Timestamp
  */
 export const toTimestamp = (dt: DateTime = DateTime.local()): Timestamp =>
-  new Timestamp(dt.toUTC().valueOf());
+    new Timestamp(dt.toUTC().valueOf());
 
 /**
  * Create a UTC DateTime object from a timestamp
@@ -17,10 +17,10 @@ export const toTimestamp = (dt: DateTime = DateTime.local()): Timestamp =>
  * @returns UTC DateTime object
  */
 export const fromTimestampToUtc = (ts: number | Timestamp): DateTime => {
-  if (isTimestamp(ts)) {
-    return DateTime.fromMillis(valueOf(ts), { zone: "UTC" });
-  }
-  return DateTime.fromMillis(ts, { zone: "UTC" });
+    if (isTimestamp(ts)) {
+        return DateTime.fromMillis(valueOf(ts), { zone: "UTC" });
+    }
+    return DateTime.fromMillis(ts, { zone: "UTC" });
 };
 
 /**
@@ -28,8 +28,7 @@ export const fromTimestampToUtc = (ts: number | Timestamp): DateTime => {
  * @param ts Timestamp
  * @returns DateTime object (local time)
  */
-export const fromTimestamp = (ts: number | Timestamp): DateTime =>
-  fromTimestampToUtc(ts).toLocal();
+export const fromTimestamp = (ts: number | Timestamp): DateTime => fromTimestampToUtc(ts).toLocal();
 
 /**
  * Typeguard checking whether the given enity is a timestamp
@@ -38,7 +37,7 @@ export const fromTimestamp = (ts: number | Timestamp): DateTime =>
  */
 // deno-lint-ignore no-explicit-any
 export const isTimestamp = (ts: any): ts is Timestamp => {
-  return ts?.type === "Timestamp" && typeof (ts?.value) === "number";
+    return ts?.type === "Timestamp" && typeof (ts?.value) === "number";
 };
 
 // Fast creation methods for durations
@@ -48,16 +47,14 @@ export const isTimestamp = (ts: any): ts is Timestamp => {
  * @param t seconds
  * @returns Duration object
  */
-export const seconds = (t: number): Duration =>
-  Duration.fromObject({ seconds: t });
+export const seconds = (t: number): Duration => Duration.fromObject({ seconds: t });
 
 /**
  * Create a duration describing the given amount of minutes
  * @param t minutes
  * @returns Duration object
  */
-export const minutes = (t: number): Duration =>
-  Duration.fromObject({ minutes: t });
+export const minutes = (t: number): Duration => Duration.fromObject({ minutes: t });
 
 /**
  * Create a duration describing the given amount of hours
@@ -85,8 +82,7 @@ export const weeks = (t: number): Duration => Duration.fromObject({ weeks: t });
  * @param t months
  * @returns Duration object
  */
-export const months = (t: number): Duration =>
-  Duration.fromObject({ months: t });
+export const months = (t: number): Duration => Duration.fromObject({ months: t });
 
 /**
  * Create a duration describing the given amount of years

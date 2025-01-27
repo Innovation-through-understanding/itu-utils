@@ -1,7 +1,7 @@
 import * as z from "zod";
 
 const unitBrand: z.ZodBranded<z.ZodLiteral<true>, "unit"> = z.literal(true)
-  .brand("unit");
+    .brand("unit");
 
 /**
  * Unit type for functional programming. For simplicity and minimal space consumption, this maps to `true`

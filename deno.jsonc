@@ -31,5 +31,13 @@
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true
+  },
+
+  "fmt": {
+    "indentWidth": 4,
+    "lineWidth": 100,
+    "singleQuote": false,
+    "proseWrap": "preserve",
+    "include": ["src/**"]
   }
 }

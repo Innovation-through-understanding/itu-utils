@@ -10,10 +10,9 @@ export {};
  * @returns PromiseSettledResult array
  */
 export const settleMap = <T, U>(
-  f: (x: T) => Promise<U>,
-  arr: Array<T>,
-): Promise<PromiseSettledResult<U>[]> =>
-  Promise.allSettled(map<T, Promise<U>>(f, arr));
+    f: (x: T) => Promise<U>,
+    arr: Array<T>,
+): Promise<PromiseSettledResult<U>[]> => Promise.allSettled(map<T, Promise<U>>(f, arr));
 
 /**
  * Wait for the given number of ms
@@ -21,10 +20,8 @@ export const settleMap = <T, U>(
  * @returns a promise that waits
  */
 export const wait = (milliseconds: number | Duration): Promise<void> => {
-  const ms = milliseconds instanceof Duration
-    ? milliseconds.as("milliseconds")
-    : milliseconds;
-  return new Promise((resolve) => setTimeout(resolve, ms));
+    const ms = milliseconds instanceof Duration ? milliseconds.as("milliseconds") : milliseconds;
+    return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 /**
@@ -35,23 +32,23 @@ export const wait = (milliseconds: number | Duration): Promise<void> => {
  * @returns a promise
  */
 export const timeout = <T>(
-  promise: Promise<T>,
-  timeoutValue: number | Duration = 5000,
+    promise: Promise<T>,
+    timeoutValue: number | Duration = 5000,
 ): Promise<T> => {
-  let timerHandle: unknown | undefined = undefined;
-  const timeoutPromise = new Promise((_, reject) => {
-    timerHandle = setTimeout(
-      () => {
-        reject(new Error(`Timeout after ${timeoutValue} ms`));
-      },
-      timeoutValue instanceof Duration ? timeoutValue.toMillis() : timeoutValue,
-    );
-  });
-  return Promise.race([
-    promise.then((result) => {
-      timerHandle && clearTimeout(timerHandle as any);
-      return result;
-    }),
-    timeoutPromise,
-  ]) as Promise<T>;
+    let timerHandle: unknown | undefined = undefined;
+    const timeoutPromise = new Promise((_, reject) => {
+        timerHandle = setTimeout(
+            () => {
+                reject(new Error(`Timeout after ${timeoutValue} ms`));
+            },
+            timeoutValue instanceof Duration ? timeoutValue.toMillis() : timeoutValue,
+        );
+    });
+    return Promise.race([
+        promise.then((result) => {
+            timerHandle && clearTimeout(timerHandle as any);
+            return result;
+        }),
+        timeoutPromise,
+    ]) as Promise<T>;
 };
