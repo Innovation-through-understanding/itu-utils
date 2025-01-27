@@ -38,7 +38,7 @@ export const timeout = <T>(
   promise: Promise<T>,
   timeoutValue: number | Duration = 5000,
 ): Promise<T> => {
-  let timerHandle: number | undefined = undefined;
+  let timerHandle: unknown | undefined = undefined;
   const timeoutPromise = new Promise((_, reject) => {
     timerHandle = setTimeout(
       () => {
@@ -49,7 +49,7 @@ export const timeout = <T>(
   });
   return Promise.race([
     promise.then((result) => {
-      timerHandle && clearTimeout(timerHandle);
+      timerHandle && clearTimeout(timerHandle as any);
       return result;
     }),
     timeoutPromise,

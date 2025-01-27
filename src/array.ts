@@ -1,5 +1,5 @@
 import { isEmpty, isNil, keys } from "rambda";
-import type { Monad } from "@itu/tsmonads";
+import type { Monad } from "tsmonads";
 
 type SubType<Base, Condition> = Pick<
   Base,

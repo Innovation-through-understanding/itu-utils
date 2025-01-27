@@ -1,6 +1,6 @@
 import { always, complement, equals, ifElse, isNil, when } from "rambda";
-import type { Maybe } from "@itu/tsmonads";
-import { maybe, nothing } from "@itu/tsmonads";
+import type { Maybe } from "tsmonads";
+import { maybe, nothing } from "tsmonads";
 
 /**
  * Performs expr if n is not zero

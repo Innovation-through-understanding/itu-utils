@@ -1,6 +1,6 @@
 import { Duration } from "luxon";
 
-import { settleMap, wait } from "../async.ts";
+import { settleMap, timeout, wait } from "../async.ts";
 import { seconds } from "../time.ts";
 
 import { assert, assertEquals, assertRejects } from "jsr:@std/assert";
@@ -48,17 +48,17 @@ Deno.test("wait", () => {
 Deno.test("timeout", () => {
   Deno.test("will trigger when the timeout is reached", async () => {
     const waitingPromise = wait(1000);
-    const tu = await Promise.timeout(waitingPromise, 500);
+    const tu = await timeout(waitingPromise, 500);
     assert(tu);
     await waitingPromise;
   });
   Deno.test("will not trigger when the timeout is not reached", async () => {
-    const tu = await Promise.timeout(Promise.resolve(true), 500);
+    const tu = await timeout(Promise.resolve(true), 500);
     assert(tu);
   });
   Deno.test("will also work with a duration", async () => {
     const waitingPromise = wait(1000);
-    const tu = Promise.timeout(
+    const tu = timeout(
       waitingPromise,
       Duration.fromObject({ milliseconds: 500 }),
     );

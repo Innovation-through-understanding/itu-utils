@@ -1,5 +1,5 @@
 import { isEmpty, isNil, keys } from "rambda";
-import { maybe, type Monad, nothing } from "@itu/tsmonads";
+import { maybe, type Monad, nothing } from "tsmonads";
 
 import { arrayToRecord, containsValue, recordToArray } from "../array.ts";
 
