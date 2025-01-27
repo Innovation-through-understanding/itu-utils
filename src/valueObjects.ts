@@ -1,6 +1,6 @@
 import R from "rambda";
 
-import type { ValueObject } from "./utilityTypes";
+import type { ValueObject } from "./utilityTypes/index.ts";
 
 /**
  * Returns the value of a value object
@@ -8,7 +8,7 @@ import type { ValueObject } from "./utilityTypes";
  * @returns enclosed type
  */
 export const valueOf = <T, U extends ValueObject<T>>(vo: U): T => {
-	return vo.value;
+    return vo.value;
 };
 
 /**
@@ -18,5 +18,5 @@ export const valueOf = <T, U extends ValueObject<T>>(vo: U): T => {
  * @returns true if a and b are equal
  */
 export const equals = <T, U extends ValueObject<T>>(a: U, b: U) => {
-	return R.equals(a.value, b.value);
+    return R.equals(a.value, b.value);
 };

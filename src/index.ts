@@ -1,9 +1,7 @@
-export * from "./debug";
-export * from "./time";
-export * from "./async";
-export * from "./functional";
-export * from "./array";
-export * from "./invariants";
-export * from "./contractDecorators";
-export * from "./utilityTypes/index";
-
+export * from "./debug.ts";
+export * from "./time.ts";
+export * from "./async.ts";
+export * from "./functional.ts";
+export * from "./array.ts";
+export * from "./invariants.ts";
+export * from "./utilityTypes/index.ts";

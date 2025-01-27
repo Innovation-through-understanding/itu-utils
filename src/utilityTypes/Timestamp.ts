@@ -1,4 +1,4 @@
-import type { ValueObject } from "./ValueObject";
+import type { ValueObject } from "./ValueObject.ts";
 
 /**
  * Value class to represent timestamps (in milliseconds since 1.1.1970)
@@ -6,7 +6,7 @@ import type { ValueObject } from "./ValueObject";
 export class Timestamp implements ValueObject<number> {
     public readonly value: number;
     public readonly type = "Timestamp";
-    
+
     constructor(_value: number) {
         if (_value < 100000000000) {
             this.value = _value * 1000;
@@ -14,7 +14,7 @@ export class Timestamp implements ValueObject<number> {
             this.value = _value;
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // deno-lint-ignore no-explicit-any
         (this as any)[Symbol.toPrimitive] = (_hint: string) => this.value;
     }
 

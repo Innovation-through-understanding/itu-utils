@@ -2,6 +2,12 @@
 
 ## Prerequisites
 
+### Deno-based projects
+
+Use the `jsr:@itu/utils` package in your projects. That's it.
+
+### Node-based projects
+
 Install the dependendies given below in your project. Install the `itu-utils` package with `npm` or `yarn`. That's it.
 
 ## Assumptions
@@ -10,10 +16,10 @@ Install the dependendies given below in your project. Install the `itu-utils` pa
 
 | Library          | Minimum version |
 | :--------------- | :-------------: |
-| luxon            |      3.4.4      |
-| rambda           |      9.1.0      |
-| tsmonads         |      3.1.0      |
-| typescript       |      5.3.3      |
-| reflect-metadata |     0.1.13      |
+| luxon            |      3.5.0      |
+| rambda           |      9.4.2      |
+| tsmonads         |      4.1.1      |
+| zod              |      3.24.1      |
+| typescript       |      5.x or higher      |
 
 !> If your project does not meet those requirements, please make sure to add or update those dependencies. All ITU projects should make use of those libraries.

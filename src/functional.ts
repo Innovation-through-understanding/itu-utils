@@ -9,10 +9,10 @@ import { maybe, nothing } from "tsmonads";
  * @returns
  */
 export const ifNotZero = (n: number, expr: unknown): unknown =>
-	when<number, void>(
-		(x: number) => !equals(x, 0),
-		() => expr
-	)(n);
+    when<number, void>(
+        (x: number) => !equals(x, 0),
+        () => expr,
+    )(n);
 
 /**
  * Performs expr if n is zero
@@ -21,20 +21,20 @@ export const ifNotZero = (n: number, expr: unknown): unknown =>
  * @returns
  */
 export const ifZero = (n: number, expr: unknown): unknown =>
-	when<number, void>(
-		(x: number) => equals(x, 0),
-		() => expr
-	)(n);
+    when<number, void>(
+        (x: number) => equals(x, 0),
+        () => expr,
+    )(n);
 
 /**
  * Returns if the given parameter is neither null nor undefined
  */
-export const isNotNil = complement(isNil);
+export const isNotNil: <T>(x: T) => boolean = complement(isNil);
 
 /**
  * A function that does exactly nothing
  */
-export const noop = always(undefined);
+export const noop: (_args: unknown) => undefined = always(undefined);
 
 /**
  * Helper function to create a Maybe monad based on the result of a predicate
@@ -44,5 +44,6 @@ export const noop = always(undefined);
  * @example Typescript - If a session has expired, return nothing, otherwise return the session
  * const expired = maybeIf((s: Session) => s.expire < toTimestamp());
  */
-export const maybeIf = <T>(predicate: (obj: T) => boolean): ((obj: T) => Maybe<T>) =>
-	ifElse(predicate, obj => maybe(obj), nothing);
+export const maybeIf = <T>(
+    predicate: (obj: T) => boolean,
+): (obj: T) => Maybe<T> => ifElse(predicate, (obj) => maybe(obj), nothing);

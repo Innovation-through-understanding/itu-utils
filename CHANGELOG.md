@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.0
+
+- Build library with deno.
+- Adapted `debug()` so it turns itself off if not running in debugging or test environments.
+- Promise constructor no longer contains timeout, which is now a seperate function. Reason: deno does not support this (for good reasons).
+
 ## 1.8.2
 
 -   Update of rambda to fix usage of isEqual. Marked Nominal as deprecated, since zod's brand() schema should be preferred over it.
