@@ -4,7 +4,9 @@
 
 `debug`
 : can be used to directly debug expressions in a functional member. It will print out the result of the expression with a freely defined message, but will leave the expression itself untouched. This
-is especially useful when debugging functional code or lambda functions.
+is especially useful when debugging functional code or lambda functions. The method will do nothing when not running in test or development modes in _node, deno,_ or _vite_. 
+
+!> Watch your environment variables if it does not behave as expected.
 
 ## Arrays and lists
 
@@ -25,10 +27,10 @@ is especially useful when debugging functional code or lambda functions.
 `Nominal`
 : `Nominal` will enrich a Type `T` to distinguish it from `T`. Variables of type `T` cannot be assigned to it directly. It is only creatable by providing a factory function or using an explicit cast.
 
-!> Nominal is now depracted. Use _zod_'s `brand()` schema instead.
+!> Nominal is now deprecated. Use _zod_'s `brand()` schema instead.
 
 `Reveal`
-: Reveals all properties (e.g. for Tooltips or code completion) of `T`, which is especially useful a deeply-inherited type. Use this for (static) debugging purposes. Avoid using it in production.
+: Reveals all properties (e.g. for Tooltips or code completion) of `T`, which is especially useful when handling a deeply-inherited type. Use this for (static) debugging purposes. Avoid using it in production.   
 
 ## Functional arithmetics and tests
 

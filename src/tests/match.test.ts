@@ -1,57 +1,92 @@
-import { match } from "../utilityTypes/Match";
+import { match } from "../utilityTypes/Match.ts";
 
-describe("match", () => {
-    it("should match numbers properly", () => {
-        const numberMatcher = match<number, number | string>(
-            [m => m > 11 && m < 20, _ => "Between 12 and 19"], 
-            [m => m < 6, _ => "Smaller than 6"], 
-            m => m == 10, // Will just return the value itself
-            [_ => true, _ => "Fall through"]);
-		
-        expect(numberMatcher(1)).toBe("Smaller than 6");
-        expect(numberMatcher(10)).toBe(10);
-        expect(numberMatcher(14)).toBe("Between 12 and 19");
-        expect(numberMatcher(10101010)).toBe("Fall through");		
-    });
-    it("should match object types", () => {
-		interface User {
-			username: string;
-			password: string;
-			su: boolean;
-			active: boolean;
-		}
-		
-		interface UserInfo {
-			username: string;
-			state: "user" | "superuser" | "inactive";
-		}
-		
-		const userMatcher = match<User, UserInfo>(
-		    [u => u.su && u.active, u => ({username: u.username, state: "superuser"})],
-		    [u => !u.su && u.active, u => ({username: u.username, state: "user"})],
-		    [_ => true, u => ({username: u.username, state: "inactive"})]
-		);
-		
-		expect(userMatcher({username: "tedlasso", password: "soccer", su: false, active: true }).state).toBe("user");
-		expect(userMatcher({username: "ledtasso", password: "football", su: false, active: false }).state).toBe("inactive");
-		expect(userMatcher({username: "nedflanders", password: "church", su: true, active: true }).state).toBe("superuser");
-    });
-    it("should match union types", () => {
-		type A = { type: "A", cause: string }
-		type B = { type: "B", effect: string }
-		type C = { type: "C", correlation: string }
-		type ABC = A | B | C;
+import { assertEquals } from "jsr:@std/assert";
+Deno.test("match", () => {
+  Deno.test("should match numbers properly", () => {
+    const numberMatcher = match<number, number | string>(
+      [(m) => m > 11 && m < 20, (_) => "Between 12 and 19"],
+      [(m) => m < 6, (_) => "Smaller than 6"],
+      (m) => m == 10, // Will just return the value itself
+      [(_) => true, (_) => "Fall through"],
+    );
 
-		const isA = (a: ABC): a is A => a.type === "A";
+    assertEquals(numberMatcher(1), "Smaller than 6");
+    assertEquals(numberMatcher(10), 10);
+    assertEquals(numberMatcher(14), "Between 12 and 19");
+    assertEquals(numberMatcher(10101010), "Fall through");
+  });
+  Deno.test("should match object types", () => {
+    interface User {
+      username: string;
+      password: string;
+      su: boolean;
+      active: boolean;
+    }
 
-		const typeMatcher = match(
-		    [isA, a => (a as A).cause], // isA cannot act as a typeguard here!
-		    [b => b.type === "B", (b) => (b as B).effect],
-		    [c => c.type === "C", (c) => (c as C).correlation],
-		);
+    interface UserInfo {
+      username: string;
+      state: "user" | "superuser" | "inactive";
+    }
 
-		expect(typeMatcher({ type: "A", cause: "CAUSE"})).toBe("CAUSE");
-		expect(typeMatcher({ type: "B", effect: "EFFECT"})).toBe("EFFECT");
-		expect(typeMatcher({ type: "C", correlation: "CORRELATION"})).toBe("CORRELATION");
-    });
+    const userMatcher = match<User, UserInfo>(
+      [
+        (u) => u.su && u.active,
+        (u) => ({ username: u.username, state: "superuser" }),
+      ],
+      [
+        (u) => !u.su && u.active,
+        (u) => ({ username: u.username, state: "user" }),
+      ],
+      [(_) => true, (u) => ({ username: u.username, state: "inactive" })],
+    );
+
+    assertEquals(
+      userMatcher({
+        username: "tedlasso",
+        password: "soccer",
+        su: false,
+        active: true,
+      }).state,
+      "user",
+    );
+    assertEquals(
+      userMatcher({
+        username: "ledtasso",
+        password: "football",
+        su: false,
+        active: false,
+      }).state,
+      "inactive",
+    );
+    assertEquals(
+      userMatcher({
+        username: "nedflanders",
+        password: "church",
+        su: true,
+        active: true,
+      }).state,
+      "superuser",
+    );
+  });
+  Deno.test("should match union types", () => {
+    type A = { type: "A"; cause: string };
+    type B = { type: "B"; effect: string };
+    type C = { type: "C"; correlation: string };
+    type ABC = A | B | C;
+
+    const isA = (a: ABC): a is A => a.type === "A";
+
+    const typeMatcher = match(
+      [isA, (a) => (a as A).cause], // isA cannot act as a typeguard here!
+      [(b) => b.type === "B", (b) => (b as B).effect],
+      [(c) => c.type === "C", (c) => (c as C).correlation],
+    );
+
+    assertEquals(typeMatcher({ type: "A", cause: "CAUSE" }), "CAUSE");
+    assertEquals(typeMatcher({ type: "B", effect: "EFFECT" }), "EFFECT");
+    assertEquals(
+      typeMatcher({ type: "C", correlation: "CORRELATION" }),
+      "CORRELATION",
+    );
+  });
 });

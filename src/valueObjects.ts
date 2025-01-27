@@ -1,6 +1,6 @@
 import R from "rambda";
 
-import type { ValueObject } from "./utilityTypes";
+import type { ValueObject } from "./utilityTypes/index.ts";
 
 /**
  * Returns the value of a value object
